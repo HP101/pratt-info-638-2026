@@ -1,0 +1,23 @@
+<h1>Books Form</h1>
+
+  {{#if book}}
+    <div>
+      <h2>{{book.title}} {{book.publishingYear}}</h2>
+    </div>
+  {{/if}}
+
+<form action="/books/upsert" role="form" method="post">
+  <div>
+    <label for="title">Title of Book</label>
+     <input type="text" id="title" name="title" {{#if book}}value="{{book.title}}"{{/if}}>
+  </div>
+  <div>
+    <label for="publishing_year">Publishing Year</label>
+    <input type="text" id="publishing_year" name="publishingYear" {{#if book}}value="{{book.publishingYear}}"{{/if}}>
+  </div>
+
+  <input type="hidden" name="id" value="{{bookIndex}}">
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
