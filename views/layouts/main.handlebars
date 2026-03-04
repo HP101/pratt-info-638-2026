@@ -2,6 +2,11 @@
 <html lang="en">
   <head></head>
   <body>
+    {{#if flash}}
+      <div>
+        <strong>{{flash.intro}}</strong> {{{flash.message}}}
+      </div>
+    {{/if}}
     {{{body}}}
   </body>
 </html>
