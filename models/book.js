@@ -1,5 +1,5 @@
 const books = [
-  {title: "Leviathan Wakes", publishingYear: 2011, authorIds: ["0","1"]},
+  {title: "Leviathan Wakes", publishingYear: 2011, authorIds: ["0","1"], genreId: ["0"]},
   {title: "Game of Thrones", publishingYear: "1995"},
   {title: "Book 3", publishingYear: "2000"},
 ]
@@ -33,3 +33,4 @@ exports.upsert = (book) => {
     exports.add(book);
   }
 }
+

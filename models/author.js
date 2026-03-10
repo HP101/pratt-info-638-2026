@@ -12,7 +12,7 @@ exports.add = (author) => {
 }
 
 exports.edit = (author) => {
-  author[author.id] = author;
+  authors[author.id] = author;
 }
 
 exports.get = (idx) => {

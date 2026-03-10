@@ -1,11 +1,11 @@
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser')
 const { credentials } = require('./config')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 
 
-const app = express()
+const app = express();
 const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -26,6 +26,7 @@ app.use((req, res, next) => {
 
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
+
 var handlebars = require('express-handlebars').create({
   helpers: {
     eq: (v1, v2) => v1 == v2,
@@ -45,7 +46,6 @@ var handlebars = require('express-handlebars').create({
     dateStr: (v) => v && v.toLocaleDateString("en-US")
   }
 });
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -57,6 +57,9 @@ const booksRouter = require('./routes/books');
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
 
+const genresRouter = require('./routes/genres');
+app.use('/', indexRouter);
+app.use('/genres', genresRouter);
 
 // custom 404 page
 app.use((req, res) => {
