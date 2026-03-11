@@ -16,12 +16,20 @@ app.use(expressSession({
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 }));
+
 app.use((req, res, next) => {
   res.locals.flash = req.session.flash
   delete req.session.flash
   next()
 })
 
+
+// session configuration
+//make the current user available in views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser
+  next()
+})
 
 
 const indexRouter = require('./routes/index');
@@ -60,6 +68,9 @@ app.use('/books', booksRouter);
 const genresRouter = require('./routes/genres');
 app.use('/', indexRouter);
 app.use('/genres', genresRouter);
+
+const usersRouter = require('./routes/users');
+app.use('/users', usersRouter);
 
 // custom 404 page
 app.use((req, res) => {
