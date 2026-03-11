@@ -7,6 +7,7 @@
   {{/if}}
 
 <form action="/books/upsert" role="form" method="post">
+<input type="hidden" name="_csrf" value="{{csrfToken}}">
   <div>
     <label for="title">Title of Book</label>
      <input type="text" id="title" name="title" {{#if book}}value="{{book.title}}"{{/if}}>
