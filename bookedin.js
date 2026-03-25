@@ -4,6 +4,7 @@ const { credentials } = require('./config')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const csrf = require('csurf') 
+const booksUsersRouter = require('./routes/books_users');
 
 
 const app = express();
@@ -17,6 +18,8 @@ app.use(expressSession({
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 }));
+app.use('/books_users', booksUsersRouter);
+
 
 // this must come after we link in body-parser,
 // cookie-parser, and express-session
